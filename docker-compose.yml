@@ -13,3 +13,16 @@ services:
       - ./data/raw-data:/raw-data
       - ./data/sql/tables.sql:/docker-entrypoint-initdb.d/1-tables.sql
       - ./data/sql/import.sql:/docker-entrypoint-initdb.d/2-import.sql
+
+  flask_datastore:
+    build:
+      context: flask-datastore
+      dockerfile: docker/Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      - POSTGRES_HOST=postgres
+    container_name: flask-datastore
+    ports:
+      - "5001:5001"
+

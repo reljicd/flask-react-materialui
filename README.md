@@ -11,7 +11,7 @@
 
 ```bash
 docker-compose build
-docker-compose run react_app
+docker-compose up react_app
 ```
 
 Visit "http://localhost:8080"

@@ -26,3 +26,19 @@ services:
     ports:
       - "5001:5001"
 
+  flask_backend:
+    build:
+      context: flask-backend
+      dockerfile: docker/Dockerfile
+    depends_on:
+      - flask_datastore
+    environment:
+      - DATASTORE_HOST=flask_datastore
+    container_name: flask-backend
+    ports:
+      - "5002:5002"
+
+
+networks:
+  default:
+    driver: bridge

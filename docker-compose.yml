@@ -38,6 +38,15 @@ services:
     ports:
       - "5002:5002"
 
+  react_app:
+    build:
+      context: react-app
+      dockerfile: docker/Dockerfile
+    depends_on:
+      - flask_backend
+    container_name: react-react-app
+    ports:
+      - "8080:80"
 
 networks:
   default:
